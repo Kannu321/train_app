@@ -206,7 +206,7 @@ export default function CreateTable() {
           setPosition(response.data.TrainPositions);
           
       }
-       }, 3000);
+       }, 300000);
       
    
   return () => setTimeout(intervalId,0);
