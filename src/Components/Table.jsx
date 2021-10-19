@@ -198,15 +198,13 @@ export default function CreateTable() {
   ////////////API Call/////////////////
   const [position,setPosition] = useState([]);
   useEffect(()=> {
-    const intervalId = setInterval(() => { 
-      getData();
-
-      async function getData(){
-          const response = await axios.get("https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key=4ea26ab54b3c4a6f949144fe6dc1bdb8");
-          setPosition(response.data.TrainPositions);
-          
-      }
-       }, 300000);
+    getData();
+    async function getData(){
+      const response = await axios.get("https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key=4ea26ab54b3c4a6f949144fe6dc1bdb8");
+      setPosition(response.data.TrainPositions);
+      
+  }
+    const intervalId = setInterval(getData, 300000);
       
    
   return () => setTimeout(intervalId,0);
